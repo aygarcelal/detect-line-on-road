@@ -28,7 +28,7 @@ def color_filter(img):
     # Sarı çizgi aralığı
     lower_yellow = np.array([18, 94, 140])
     upper_yellow = np.array([48, 255, 255])
-yellow_mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
+    yellow_mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
 
     combined_mask = cv2.bitwise_or(white_mask, yellow_mask)
     filtered = cv2.bitwise_and(img, img, mask=combined_mask)
@@ -54,10 +54,9 @@ def perspective_transform(img):
 def detect_lanes(frame):
     filtered = color_filter(frame)
     birdseye = perspective_transform(filtere…
-combined = cv2.addWeighted(frame, 0.8, line_image, 1, 0)
+    combined = cv2.addWeighted(frame, 0.8, line_image, 1, 0)
     return combined
 
-Video oynatma
 cap = cv2.VideoCapture("your_video.mp4")
 
 while cap.isOpened():
